@@ -5,7 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
     cors: {    
-        origin: "http://localhost:4200",    
+        origin: "https://chatio-ferlr.netlify.app/",    
 }})
 
 var num_usr = 0;
@@ -15,6 +15,7 @@ var usrs = [];
 
 //EVENTO CONEXION
 io.on('connection', (socket) => { 
+    console.log('conexion');
     //EVENTO LOGIN
     socket.on('login', (usrdata)=>{
         //EMISION USUARIOS
