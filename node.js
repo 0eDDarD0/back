@@ -5,7 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
     cors: {    
-        origin: "https://chatio-ferlr.netlify.app/",    
+        origin: "https://chatio-ferlr.netlify.app",    
 }})
 
 var num_usr = 0;
