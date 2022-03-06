@@ -6,6 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server, {
     cors: {    
         origin: "https://chatio-ferlr.netlify.app",    
+        // origin: "http://localhost:4200",    
 }})
 
 var num_usr = 0;
@@ -41,6 +42,16 @@ io.on('connection', (socket) => {
             msgs.push(envelope);
             //EMISION ADIOS
             io.emit('adiop', envelope);
+        });
+
+        //EVENTO ESCRIBIENDO
+        socket.on('escribiendop', ()=>{
+            io.emit('escribiendop_u', socket.nickname);
+        });
+
+        //EVENTO QUIETO
+        socket.on('quietop', ()=>{
+            io.emit('quietop_u', {nickname: socket.nickname, estado: socket.estado});
         });
     });
 
